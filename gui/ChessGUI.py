@@ -63,9 +63,9 @@ class ChessGUI:
                 pygame.draw.rect(self.screen, (0, 0, 0),
                                  (pos[0] * cell_width, pos[1] * cell_height, cell_width, cell_height))
 
-        textsurface = self.myfont.render(f'# of Itterations: {self.chess_board.score}', False, (0, 0, 0))
-
-        self.screen.blit(textsurface, (15, 15))
+        if self.chess_board.score != 0:
+            textsurface = self.myfont.render(f'# of Itterations: {self.chess_board.score}', False, (0, 0, 0))
+            self.screen.blit(textsurface, (15, 15))
 
     def run(self):
         while True:
