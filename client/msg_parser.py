@@ -24,8 +24,10 @@ def parse_cmd(cmd):
         width = int(info[0])
         height = int(info[1])
         return type, (width, height)
+
     elif type == 'result':
         score = int(params)
         return type, score
+
     else:
         return type, params

@@ -8,6 +8,7 @@ LIGHT_ORANGE = (255, 162, 106)
 BLACK = (0, 0, 0)
 BEIGE = (245, 245, 220)
 DARK_BROWN = (101, 67, 33)
+RED = (255, 0 , 0)
 
 
 class ChessGUI:
@@ -16,7 +17,7 @@ class ChessGUI:
         pygame.font.init()
         pygame.display.set_caption("Chess Monitor")
 
-        self.myfont = pygame.font.SysFont('Comic Sans MS', 30)
+        self.myfont = pygame.font.SysFont('serif', 15)
 
         self.client = client
 
@@ -64,7 +65,7 @@ class ChessGUI:
                                  (pos[0] * cell_width, pos[1] * cell_height, cell_width, cell_height))
 
         if self.chess_board.score != 0:
-            textsurface = self.myfont.render(f'# of Itterations: {self.chess_board.score}', False, (0, 0, 0))
+            textsurface = self.myfont.render(f'# of Itterations: {self.chess_board.score}', True, BLACK)
             self.screen.blit(textsurface, (15, 15))
 
     def run(self):
