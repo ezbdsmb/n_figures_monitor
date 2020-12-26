@@ -4,7 +4,10 @@ from sys import exit
 
 SIZE = W, H = (600, 600)
 WHITE = (255, 255, 255)
-
+LIGHT_ORANGE = (255, 162, 106)
+BLACK = (0, 0, 0)
+BEIGE = (245, 245, 220)
+DARK_BROWN = (101, 67, 33)
 
 
 class ChessGUI:
@@ -17,9 +20,9 @@ class ChessGUI:
         self.screen = pygame.display.set_mode(SIZE)
         self.chess_board = chess_board
 
-        self.queen_img = pygame.image.load('../gui/img/queen.png').convert_alpha()
-        self.rook_img = pygame.image.load('../gui/img/rook.png').convert_alpha()
-        self.bishop_img = pygame.image.load('../gui/img/bishop.png').convert_alpha()
+        self.queen_img = pygame.image.load('../gui/img/queen2.png').convert_alpha()
+        self.rook_img = pygame.image.load('../gui/img/rook2.png').convert_alpha()
+        self.bishop_img = pygame.image.load('../gui/img/bishop2.png').convert_alpha()
 
         self.queen_img.set_colorkey((255, 255, 255))
         self.rook_img.set_colorkey((255, 255, 255))
@@ -37,8 +40,14 @@ class ChessGUI:
 
         for i in range(board_width):
             for j in range(board_height):
-                pygame.draw.rect(self.screen, (0, 0, 0),
+                col = BEIGE if (i + j) % 2 == 0 else DARK_BROWN
+
+                pygame.draw.rect(self.screen, col,
+                                 (i * cell_width, j * cell_height, cell_width, cell_height))
+
+                pygame.draw.rect(self.screen, BLACK,
                                  (i*cell_width, j*cell_height, cell_width, cell_height), 1)
+
 
         chess_dict = self.chess_board.figures_positions()
         for fig_name in chess_dict.keys():
