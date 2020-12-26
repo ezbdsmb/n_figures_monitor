@@ -8,9 +8,11 @@ WHITE = (255, 255, 255)
 
 
 class ChessGUI:
-    def __init__(self, chess_board):
+    def __init__(self, chess_board, client):
         pygame.init()
         pygame.display.set_caption("Chess Monitor")
+
+        self.client = client
 
         self.screen = pygame.display.set_mode(SIZE)
         self.chess_board = chess_board
@@ -56,6 +58,8 @@ class ChessGUI:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     exit()
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                    self.client.start()
 
             self.screen.fill(WHITE)
 

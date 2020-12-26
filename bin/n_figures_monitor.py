@@ -13,7 +13,7 @@ if __name__ == '__main__':
     client = ChessMonitorClient(b)
     client.init()
 
-    gui = ChessGUI(b)
+    gui = ChessGUI(b, client)
     gui.run()
 
 

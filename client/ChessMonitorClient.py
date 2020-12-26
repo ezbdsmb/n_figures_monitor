@@ -20,6 +20,12 @@ class ChessMonitorClient(UDPClient):
 
         self.client_thread.start()
 
+    def start(self):
+        reqs = ['set_params 12 12', 'start_solving']
+
+        for req in reqs:
+            self.sendto(req, self.server_addr)
+
     def __recv_loop(self):
         while True:
             data, addr = self.recvfrom()
