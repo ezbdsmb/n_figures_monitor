@@ -13,7 +13,10 @@ DARK_BROWN = (101, 67, 33)
 class ChessGUI:
     def __init__(self, chess_board, client):
         pygame.init()
+        pygame.font.init()
         pygame.display.set_caption("Chess Monitor")
+
+        self.myfont = pygame.font.SysFont('Comic Sans MS', 30)
 
         self.client = client
 
@@ -35,8 +38,8 @@ class ChessGUI:
     def draw_chess_board(self):
         board_width, board_height = self.chess_board.size
 
-        cell_width = int(W / board_width)
-        cell_height = int(H / board_height)
+        cell_width = int(self.screen.get_width() / board_width)
+        cell_height = int(self.screen.get_height() / board_height)
 
         for i in range(board_width):
             for j in range(board_height):
@@ -60,6 +63,9 @@ class ChessGUI:
                 pygame.draw.rect(self.screen, (0, 0, 0),
                                  (pos[0] * cell_width, pos[1] * cell_height, cell_width, cell_height))
 
+        textsurface = self.myfont.render(f'# of Itterations: {self.chess_board.score}', False, (0, 0, 0))
+
+        self.screen.blit(textsurface, (15, 15))
 
     def run(self):
         while True:

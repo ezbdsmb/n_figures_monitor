@@ -39,6 +39,8 @@ class ChessMonitorClient(UDPClient):
             elif type == 'board':
                 print(type, param)
                 self.chess_board.set_positions(param)
+            elif type == 'score':
+                self.chess_board.set_score(param)
 
 
 
